@@ -39,7 +39,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic(err)
 	}
-	log.Printf("%s %s %s \n", r.Method, r.URL, r.Proto)
 	cType := r.Header.Get("Content-Type")
 
 	var body []byte
@@ -63,9 +62,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Bad Request", http.StatusBadRequest)
 		return
 	}
-
-	log.Println("Body: " + string(body))
-	fmt.Printf("%+v\n", payload)
 
 	var request HapiRequest
 	request.Type = "hosting"
